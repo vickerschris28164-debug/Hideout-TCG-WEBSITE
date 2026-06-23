@@ -2,15 +2,26 @@
   --bg:#0b0b0d;
   --panel:#0f0e13;
   --accent:#7c3aed; /* purple */
+  --accent-2:#5b21b6;
+  --glow:0 10px 30px rgba(124,58,237,0.18);
   --muted:#bfb8d9;
 }
 *{box-sizing:border-box}
+.animated-bg{
+  position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 20%, rgba(124,58,237,0.06), transparent 8%), radial-gradient(ellipse at 80% 80%, rgba(0,0,0,0.35), transparent 40%), linear-gradient(180deg,var(--bg),#070607);
+  background-size:200% 200%;
+  animation: bgShift 18s linear infinite;
+}
+
+@keyframes bgShift{0%{background-position:0% 0%}50%{background-position:100% 100%}100%{background-position:0% 0%}}
+
 body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#070607);color:var(--muted);min-height:100vh}
-.site-header{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:linear-gradient(90deg,rgba(124,58,237,0.06),transparent);border-bottom:1px solid rgba(124,58,237,0.06);flex-wrap:wrap;gap:14px}
+.site-header{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:rgba(11,11,13,0.45);backdrop-filter:blur(6px);box-shadow:0 6px 24px rgba(0,0,0,0.6);border-bottom:1px solid rgba(124,58,237,0.06);flex-wrap:wrap;gap:14px}
 .brand{display:flex;align-items:center;gap:12px}
-.site-logo{width:72px;height:auto;border-radius:8px;object-fit:contain}
-.logo{font-weight:800;font-size:20px;color:#fff}
-.logo span{color:var(--accent);margin-left:6px}
+.site-logo{width:56px;height:auto;border-radius:8px;object-fit:contain;transition:transform .22s ease,box-shadow .22s ease;box-shadow:var(--glow)}
+.site-logo:hover{transform:scale(1.08);box-shadow:0 14px 40px rgba(124,58,237,0.25)}
+.logo{font-weight:800;font-size:18px;color:#fff;letter-spacing:1px}
+.logo span{color:var(--accent);margin-left:6px;text-shadow:0 2px 12px rgba(124,58,237,0.25)}
 .tag{font-size:12px;color:rgba(191,184,217,0.7)}
 .site-nav{display:flex;gap:18px;margin-left:24px}
 .site-nav a{color:rgba(191,184,217,0.88);text-decoration:none;font-size:14px;font-weight:600}
@@ -24,7 +35,9 @@ body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:linear-gra
 .schedule{margin-top:18px;padding:18px;background:rgba(124,58,237,0.05);border-radius:12px;border:1px solid rgba(124,58,237,0.1)}
 .schedule ul{padding-left:20px;margin:0}
 .schedule li{margin-bottom:10px}
-.hero{background:linear-gradient(180deg,rgba(124,58,237,0.06),transparent);padding:28px;border-radius:10px;margin-bottom:22px}
+.hero{position:relative;overflow:hidden;padding:36px;border-radius:14px;margin-bottom:22px;background:linear-gradient(180deg,rgba(124,58,237,0.04),transparent);border:1px solid rgba(124,58,237,0.06)}
+.hero:before{content:"";position:absolute;inset:-20%;background:radial-gradient(ellipse at 10% 20%, rgba(124,58,237,0.12), transparent 12%), radial-gradient(ellipse at 90% 80%, rgba(0,0,0,0.4), transparent 30%);transform:translateZ(0);filter:blur(24px);opacity:0.85}
+.hero h1{position:relative;z-index:2}
 .hero h1{color:#fff;margin:0 0 8px}
 .cta{display:inline-block;margin-top:12px;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:8px 12px;border-radius:8px;text-decoration:none}
 h2{color:#fff}
@@ -38,9 +51,9 @@ h2{color:#fff}
 .info-card li{margin-bottom:8px}
 .note{margin-top:12px;color:rgba(191,184,217,0.8)}
 .gallery{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-.gallery img{width:220px;height:140px;object-fit:cover;border-radius:8px;border:2px solid rgba(124,58,237,0.08)}
+.gallery img{width:220px;height:140px;object-fit:cover;border-radius:8px;border:2px solid rgba(124,58,237,0.08);box-shadow:0 8px 24px rgba(0,0,0,0.6)}
 .sample{padding:28px;border-radius:8px;background:linear-gradient(180deg,rgba(124,58,237,0.03),transparent);color:rgba(191,184,217,0.9)}
 .site-footer{margin-top:36px;padding:18px;border-top:1px solid rgba(124,58,237,0.04);text-align:center;color:rgba(191,184,217,0.7)}
 code{background:#0b0b0d;padding:2px 6px;border-radius:6px;color:var(--muted);font-size:13px}
-@media(max-width:840px){.site-header{justify-content:center;text-align:center}.site-nav{flex-wrap:wrap;justify-content:center;margin-left:0}.brand{flex-direction:column;align-items:center}}
+@media(max-width:840px){.site-header{justify-content:center;text-align:center}.site-nav{flex-wrap:wrap;justify-content:center;margin-left:0}.brand{flex-direction:column;align-items:center}.site-logo{width:48px}}
 @media(max-width:640px){.cards{flex-direction:column}.discord-btn{padding:8px 10px}}
