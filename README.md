@@ -40,3 +40,21 @@ Next steps I can do for you
 
 If you upload the photos and logo here, I'll integrate them and adjust the theme to match exactly.
 
+## Backup and recovery
+
+This repository stores the full website source, so if you run out of credits you can still access the site files and instructions here on GitHub.
+
+## Custom domain setup
+
+GitHub Pages can publish this site under a custom domain, but domain names cannot use underscores. Instead, use a name like `hideout-tcg.com` or `hideouttcg.com`.
+
+Steps to connect a custom domain:
+1. Register the domain with a registrar.
+2. In your repository, create a file named `CNAME` containing the domain name.
+3. In GitHub Settings > Pages, add the custom domain.
+4. Update your DNS records with your registrar:
+   - For an apex domain (`hideouttcg.com`), add A records to GitHub Pages IPs.
+   - For a subdomain (`www.hideouttcg.com`), add a CNAME to `username.github.io`.
+
+After DNS updates propagate, your site can load from the custom domain.
+
