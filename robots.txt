@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vickerschris28164-debug.github.io/Hideout-TCG-WEBSITE/sitemap.xml
